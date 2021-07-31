@@ -1,0 +1,141 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {margin: 0; padding: 0;}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+}
+
+body {
+    font-family: Roboto;
+}
+
+.container {
+    max-width: 100%;
+}
+
+header {
+    display: flex;
+    background-color: #F5F5F6;
+    align-items: center;
+    justify-content: center;
+    padding: 17px 0px 14px 0px;
+}
+
+ul {
+    font-size: 11px;
+    font-weight: 500;
+    color: #959BA4;
+    list-style-type: none;
+    display: flex;
+    margin-left: 64px;
+    margin-right: 109px;
+  }
+    
+
+li {
+    padding-left: 25px;
+}
+
+li:first-child {
+    color: #000000;
+}
+
+.login {
+    width: 58px;
+    height: 33px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    border: none;
+    font-size: 11px;
+    font-weight: 700;
+    color: #000000;
+}
+
+h1 {
+    margin: 50px 0px 0px 356px;
+}
+
+.input {
+    display: flex;
+    margin: 33px 0px 0px 356px;
+}
+
+p {
+    font-size: 12px;
+    color: #9F9F9F;
+}
+.buttons{
+    margin-left: 4px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.rub-ihave, .usd-ihave, .eur-ihave, .gbp-ihave, .rub-ibuy, .usd-ibuy, .eur-ibuy, .gbp-ibuy{
+    width: 65.06px;
+    height: 30px;
+    border-color: #E5E5E5;
+    background: transparent;
+    border-style: solid;
+    border-width: 1.5px;
+    border-right: none;
+    margin-left: -4px;
+    font-size: 12px;
+    color: #C6C6C6;
+}
+.ihave {
+    margin-right: 123px;
+}
+
+.rub-ihave, .rub-ibuy {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.gbp-ihave, .gbp-ibuy {
+    border-right-style: solid;
+    border-width: 1.5px;
+    border-color: #E5E5E5;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.rub-ihave {
+    background-color: #833AE0;
+    color: #FFFFFF;
+    border-color: #833AE0;
+}
+
+.usd-ibuy {
+    background-color: #833AE0;
+    color: #FFFFFF;
+    border-color: #833AE0;
+}
+
+.first-box, .second-box {
+    border: none;
+    font-size: 36px;
+    outline-style: none;
+    font-weight: 700;
+    width: 230px;
+    padding-top: 11px;
+    padding-left: 11px;
+}
+
+.box-block {
+    width: 257px;
+    height: 102px;
+    border-width: 1.5px;
+    border-color: #E5E5E5;
+    border-style: solid;
+    border-radius: 3px;
+}
+
+.bottom-label, .bottom-labe2 {
+    margin-left: 16px;
+    margin-top: 23px;
+    color: #C6C6C6;
+    font-size: 12px;
+}
