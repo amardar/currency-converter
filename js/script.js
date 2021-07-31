@@ -15,6 +15,9 @@ let currencyIhave = "RUB";
 
 let currencyIbuy = "USD";
 
+updateValue1InverseClick() 
+updateValue2InverseClickiNIT()
+
 // Получаем значение первого инпута
 
 rubIhave.setAttribute("button-on", "1")
@@ -46,6 +49,7 @@ rubIhave.addEventListener('click', function (event) {
     currencyIhave = "RUB";
 
     updateValue1Click(input1.value)
+    updateValue1InverseClick() 
 
 })
 
@@ -75,6 +79,7 @@ usdIhave.addEventListener('click', function (event) {
     currencyIhave = "USD";
 
     updateValue1Click(input1.value)
+    updateValue1InverseClick()
     
 })
 
@@ -104,6 +109,7 @@ eurIhave.addEventListener('click', function (event) {
     currencyIhave = "EUR";
 
     updateValue1Click(input1.value)
+    updateValue1InverseClick() 
 })
 
 gbpIhave.addEventListener('click', function (event) {
@@ -132,6 +138,7 @@ gbpIhave.addEventListener('click', function (event) {
     currencyIhave = "GBP";
 
     updateValue1Click(input1.value)
+    updateValue1InverseClick() 
     
 })
 
@@ -164,6 +171,7 @@ rubIbuy.addEventListener('click', function (event) {
     currencyIbuy = "RUB";
 
     updateValue2Click(input2.value)
+    updateValue2InverseClick()
    
 })
 
@@ -193,6 +201,7 @@ usdIbuy.addEventListener('click', function (event) {
     currencyIbuy = "USD";
 
     updateValue2Click(input2.value)
+    updateValue2InverseClick()
 
 })
 
@@ -222,6 +231,7 @@ eurIbuy.addEventListener('click', function (event) {
     currencyIbuy = "EUR";
 
     updateValue2Click(input2.value)
+    updateValue2InverseClick()
 
 
 })
@@ -253,6 +263,7 @@ gbpIbuy.addEventListener('click', function (event) {
     currencyIbuy = "GBP";
 
     updateValue2Click(input2.value)
+    updateValue2InverseClick()
 
     
 })
@@ -269,7 +280,8 @@ function updateValue1(e) {
 
     fetch(`https://api.exchangerate.host/latest?base=${currencyIhave}&symbols=${currencyIbuy}`)
     .then(response => response.json())
-    .then(data => {data.rates[currencyIbuy];
+    .then(data => {data.rates[currencyIbuy]
+    
   
      let converter = data.rates[currencyIbuy];
   
@@ -277,23 +289,28 @@ function updateValue1(e) {
 
      console.log(currencyIhave)
   
-     input2.value = e.target.value * converter;
+     input2.value = (e.target.value * converter).toFixed(4);
      
-    });
+    })
+
+    .catch(() => alert('Произошла ошибка, попробуйте позже'));
 }
 
 function updateValue2(e) {
     fetch(`https://api.exchangerate.host/latest?base=${currencyIbuy}&symbols=${currencyIhave}`)
     .then(response => response.json())
-    .then(data => {data.rates[currencyIhave];
+    .then(data => {data.rates[currencyIhave]
+ 
   
      let converter = data.rates[currencyIhave];
   
      console.log(converter)
   
-     input1.value = e.target.value * converter;
+     input1.value = (e.target.value * converter).toFixed(4);
 
-    });
+    })
+
+    .catch(() => alert('Произошла ошибка, попробуйте позже'));
 
 }
 
@@ -304,7 +321,8 @@ function updateValue1Click(e) {
 
     fetch(`https://api.exchangerate.host/latest?base=${currencyIhave}&symbols=${currencyIbuy}`)
     .then(response => response.json())
-    .then(data => {data.rates[currencyIbuy];
+    .then(data => {data.rates[currencyIbuy]
+   
   
      let converter = data.rates[currencyIbuy];
   
@@ -312,30 +330,104 @@ function updateValue1Click(e) {
 
      console.log(currencyIhave)
   
-     input2.value = e * converter;
+     input2.value = (e * converter).toFixed(4);
 
-     bottomCurs1.innerText = `1 ${currencyIhave} = ${converter} ${currencyIbuy} `
-     bottomCurs2.innerText = `1 ${currencyIbuy} = ${converter} ${currencyIhave} `
-    });
+     bottomCurs1.innerText = `1 ${currencyIhave} = ${converter.toFixed(4)} ${currencyIbuy} `
+  
+    })
+    .catch(() => alert('Произошла ошибка, попробуйте позже'));
 
 }
 
 function updateValue2Click(e) {
     fetch(`https://api.exchangerate.host/latest?base=${currencyIbuy}&symbols=${currencyIhave}`)
     .then(response => response.json())
-    .then(data => {data.rates[currencyIhave];
+    .then(data => {data.rates[currencyIhave]
+    
   
      let converter = data.rates[currencyIhave];
   
      console.log(converter)
   
-     input1.value = e * converter;
+     input1.value = (e * converter).toFixed(4);
 
-     bottomCurs2.innerText = `1 ${currencyIbuy} = ${converter} ${currencyIhave} `
+     bottomCurs2.innerText = `1 ${currencyIbuy} = ${converter.toFixed(4)} ${currencyIhave} `
 
-    });
+     
+
+    })
+
+    .catch(() => alert('Произошла ошибка, попробуйте позже'));
 
 }
+
+function updateValue1InverseClick() {
+
+    fetch(`https://api.exchangerate.host/latest?base=${currencyIhave}&symbols=${currencyIbuy}`)
+    .then(response => response.json())
+    .then(data => {data.rates[currencyIbuy]
+   
+  
+     let converter = data.rates[currencyIbuy];
+
+     let fixed = 1/converter
+  
+     bottomCurs2.innerText = `1 ${currencyIbuy} = ${fixed.toFixed(4)} ${currencyIhave} `
+        
+
+     
+    })
+
+    .catch(() => alert('Произошла ошибка, попробуйте позже'));
+
+}
+
+function updateValue2InverseClick() {
+
+    fetch(`https://api.exchangerate.host/latest?base=${currencyIhave}&symbols=${currencyIbuy}`)
+    .then(response => response.json())
+    .then(data => {data.rates[currencyIbuy]
+    
+  
+     let converter = data.rates[currencyIbuy];
+  
+     bottomCurs1.innerText = `1 ${currencyIbuy} = ${converter.toFixed(4)} ${currencyIhave} `
+
+     
+  
+    }
+    )
+
+    .catch(() => alert('Произошла ошибка, попробуйте позже'));
+
+
+
+}
+
+function updateValue2InverseClickiNIT() {
+
+    fetch(`https://api.exchangerate.host/latest?base=${currencyIhave}&symbols=${currencyIbuy}`)
+    .then(response => response.json())
+    .then(data => {data.rates[currencyIbuy]
+    
+    
+  
+     let converter = data.rates[currencyIbuy];
+
+     let fixed = 1/converter;
+
+     input2.value= fixed.toFixed(4)
+  
+     bottomCurs1.innerText = `1 ${currencyIhave} = ${converter.toFixed(4)} ${currencyIbuy} `
+
+    
+  
+    })
+
+    .catch(() => alert('Произошла ошибка, попробуйте позже'));
+
+}
+
 
 // Прописываем логику нижней плашки
 
